@@ -1,0 +1,29 @@
+{
+  "name": "transliteration_api",
+  "version": "0.0.1",
+  "private": "true",
+  "description": "API for Arabic Transliteration",
+  "main": "index.js",
+  "dependencies": {
+    "eyes": "^0.1.8",
+    "koa": "^0.21.0",
+    "koa-body-parser": "^1.1.2",
+    "koa-router": "^5.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michaelporter"
+  },
+  "keywords": [
+    "arabic",
+    "transliteration",
+    "api",
+    "unicode"
+  ],
+  "author": "Michael Porter",
+  "license": "ISC"
+}
