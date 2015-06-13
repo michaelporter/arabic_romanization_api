@@ -4,6 +4,7 @@
 //
 
 module.exports = {
+  " ": { "name" : "space", "unicode": "\u0020" },
   "a": { "name" : "'alif", "unicode": "\u0627"},
   "b": { "name" : "baa'", "unicode": "\u0628"},
   "t": { "name" : "taa'", "unicode": "\u062A"},
