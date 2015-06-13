@@ -12,6 +12,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node --harmony_generators --harmony_scoping index.js",
     "test": "mocha test"
   },
   "repository": {
