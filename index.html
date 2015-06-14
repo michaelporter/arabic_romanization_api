@@ -11,6 +11,10 @@
   </head>
 
   <body>
+    <form id="romanized_text_form">
+      <input name="romanized_text" id="romanized_text" type="text" placeholder="type romanized text here" />
+      <button id="romanized_text_submit" type="submit">Submit</button>
+    </form>
     <div id="romanized"> </div>
     <div id="script"> </div>
     <div id="unicode"> </div>
@@ -23,16 +27,26 @@
           "data": {"text": romanText}
         })
       .done(function(a, b, c) {
-        $("#romanized").html(a.original);
+        var romanizedOutput = document.getElementById("romanized");
+        var scriptOutput = document.getElementById("script");
+        var unicodeOutput = document.getElementById("unicode");
+
+        romanizedOutput.innerHTML = a.original;
+        //$("#romanized").html(a.original);
         // why does it display backwards if I don't do this? The API response
         // is as expected, but the display is incorrect
-        $("#script").html(a.arabic.split("").reverse().join(""));
-        $("#unicode").html(a.unicode.join("-"));
+        scriptOutput.innerHTML = a.arabic.split("").reverse().join("");
+        unicodeOutput.innerHTML = a.unicode.join("-");
       });
     }
 
-    document.addEventListener('DOMContentLoaded', function(e) {
-        fetchArabic("tabbouleh");
-    })
+    var form = document.getElementById("romanized_text_form");
+    var input = document.getElementById("romanized_text");
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        fetchArabic(input.value);
+    });
+
   </script>
 </html>
