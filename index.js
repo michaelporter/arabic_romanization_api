@@ -4,7 +4,7 @@
   var koa = require('koa'),
       router = require('koa-router')(),
       bodyParser = require('koa-body-parser'),
-      letterMap = require("./letter_map");
+      letterMap = require("./letter_map").arabEasy;
 
   var app = koa();
   app.use(bodyParser());
