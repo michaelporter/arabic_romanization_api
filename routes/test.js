@@ -1,4 +1,5 @@
-var letterMap = require('../lib/letter_map').arabEasy,
+var romanLetterMap = require('../lib/letter_map').arabEasyRoman,
+    arabicLetterMap = require('../lib/letter_map').arabEasyArabic,
     util = require('../lib/util');
 
 module.exports = (function () {
@@ -20,8 +21,10 @@ module.exports = (function () {
 
     let result = [];
 
+    var letterMap = util.getLetterMap(text, arabicLetterMap, romanLetterMap);
+
     for (let i = 0; i < text.length; i++) {
-      let map = letterMap[text.charAt(i)];
+      let map = letterMap.map[text.charAt(i)];
       if (map) {
         let letterUnicode = map.unicode;
         result.push(letterUnicode);
@@ -30,13 +33,21 @@ module.exports = (function () {
       }
     }
 
-    var arabic = result.reverse().join("");
-    var unicode  = util.unicodeFromString(arabic).reverse();
+    var arabic, romanized;
+    if (letterMap.keyLang == 'english') {
+      arabic = result.reverse().join("");
+      romanized = text;
+    } else {
+      arabic = text;
+      romanized = result.reverse().join("");
+    }
+
+    //var unicode  = util.unicodeFromString(arabic).reverse();
 
     this.body = {
-      "original": text,
+      "romanized": romanized,
       "arabic": arabic,
-      "unicode": unicode
+      //"unicode": unicode
     };
   };
 })();
