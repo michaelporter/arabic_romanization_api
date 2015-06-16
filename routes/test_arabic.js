@@ -9,8 +9,6 @@ module.exports = (function () {
     this.set("Access-Control-Allow-Origin", "*");
     this.set("Access-Control-Allow-Methods", "GET");
 
-    console.log("getting arabic route");
-
     let text = util.getParam.apply(this, ["text"]);
 
     if (text === undefined) {
@@ -23,11 +21,7 @@ module.exports = (function () {
 
     let result = [];
 
-    console.log("text length:", text.length);
     for (let i = 0; i < text.length; i++) {
-      console.log("hey");
-      console.log(text);
-      console.log(text.charAt(i));
       let map = arabicMap[text.charAt(i)];
 
       if (map) {
